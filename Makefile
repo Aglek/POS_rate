@@ -14,7 +14,7 @@ build:
 
 run:
 	@docker volume create $(VOLUME_NAME)
-	@docker run --rm \
+	@docker run \
 	--name $(CONTAINER_NAME) \
 	-p $(CONTAINER_PORT):5000 \
 	-v $(VOLUME_NAME):/rates \
