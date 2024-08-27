@@ -1,5 +1,4 @@
-Создать образ:
-docker build -t pos_rate:v0.0 POS_rate/
+Сборка и запуск выполяется командой
+docker compose up
 
-Запустить контейнер:
-docker run -it -p 8000:8000 --name pos_rate  pos_rate:v0.0
+история запросов курсов пишется в БД, и выводится на страницу.
