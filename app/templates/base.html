@@ -7,8 +7,6 @@
     <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet" />
 </head>
 <body>
-    <h2>Курс сегодня {{ today_day }}:</h2>
-    {% block CurrRate %}{% endblock CurrRate %}
     <form method="post">
         <div class="SelCurr">
             {{ form.csrf_token }}
@@ -16,5 +14,7 @@
             {{ form.listCurr.label.text }} {{ form.listCurr }}  {{ form.btSelect() }}
         </div>
     </form>
+    <h2>Курс сегодня {{ today }}:</h2>
+    {% block CurrRate %}{% endblock CurrRate %}
 </body>
 </html>

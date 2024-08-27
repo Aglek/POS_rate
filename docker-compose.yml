@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres:16.4-alpine
+    container_name: pos_rate_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+    networks: &def-net
+      - def_net
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "psql -U user -d db -c 'SELECT 1'"]
+      interval: 5s
+      timeout: 5s
+      retries: 2
+
+  app:
+    image: pos_rate_app:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: pos_rate_app
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_NAME: db
+    networks: *def-net
+    ports:
+      - 5001:5001
+    depends_on:
+      db:
+        condition: service_healthy
+
+networks:
+  this_net:
+    name: pos_rate_net
+
+volumes:
+  db_volume:
+    name: pos_rate_db_volume

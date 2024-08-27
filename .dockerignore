@@ -1,0 +1,5 @@
+README.md
+.venv
+*.log
+*.pyc
+.gitignore
