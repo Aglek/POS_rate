@@ -37,7 +37,7 @@ services:
         condition: service_healthy
 
 networks:
-  this_net:
+  def_net:
     name: pos_rate_net
 
 volumes:

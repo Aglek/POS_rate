@@ -1,7 +1,7 @@
 import psycopg2
 import os
 
-TABLE_NAME = 'descriptions'
+TABLE_NAME = 'pos_rate_hist'
 
 
 def get_db_connection():

@@ -5,8 +5,8 @@
 <br>
 <br>
 <h1>История</h1>
-    {% for irw in hist %}
-        <p> {{ irw }} </p>
-    {% endfor %}
+{% for irw in hist %}
+<br> {{ irw[0] }} -  {{ irw[1] }}  - {{ irw[2] }} 
+{% endfor %}
 {% endblock CurrRate %}
    
